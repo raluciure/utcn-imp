@@ -144,6 +144,14 @@ std::shared_ptr<Expr> Parser::ParseTermExpr()
           std::make_shared<RefExpr>(ident)
       );
     }
+    //lab1
+    case Token::Kind::INT: {
+      uint64_t integer = tk.GetInteger();
+      lexer_.Next();
+      return std::static_pointer_cast<Expr>(
+        std::make_shared<IntExpr>(integer)
+      );
+    }
     default: {
       std::ostringstream os;
       os << "unexpected " << tk << ", expecting term";

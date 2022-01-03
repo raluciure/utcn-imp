@@ -127,6 +127,9 @@ private:
   void LowerBinaryExpr(const Scope &scope, const BinaryExpr &expr);
   /// Lowers a call expression.
   void LowerCallExpr(const Scope &scope, const CallExpr &expr);
+  /// lab1
+  /// Lowers a int expression.
+  void LowerIntExpr(const Scope &scope, const IntExpr &intgr);
 
   /// Lowers a function declaration.
   void LowerFuncDecl(const Scope &scope, const FuncDecl &funcDecl);
