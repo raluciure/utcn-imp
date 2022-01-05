@@ -141,6 +141,9 @@ std::ostream &operator<<(std::ostream &os, const Token::Kind kind)
     case Token::Kind::INT: return os << "INT";
     case Token::Kind::STRING: return os << "STRING";
     case Token::Kind::IDENT: return os << "IDENT";
+    //lab2
+    case Token::Kind::IF: return os << "if";
+    case Token::Kind::MODULO: return os << "%";
   }
   return os;
 }
@@ -199,6 +202,8 @@ const Token &Lexer::Next()
     case '=': return NextChar(), tk_ = Token::Equal(loc);
     case '+': return NextChar(), tk_ = Token::Plus(loc);
     case ',': return NextChar(), tk_ = Token::Comma(loc);
+    //lab2
+    case '%': return NextChar(), tk_ = Token::Modulo(loc);
     case '"': {
       std::string word;
       NextChar();
@@ -222,6 +227,8 @@ const Token &Lexer::Next()
         if (word == "func") return tk_ = Token::Func(loc);
         if (word == "return") return tk_ = Token::Return(loc);
         if (word == "while") return tk_ = Token::While(loc);
+        //lab2
+        if (word == "if") return tk_ = Token::If(loc);
         return tk_ = Token::Ident(loc, word);
       }
       //lab1

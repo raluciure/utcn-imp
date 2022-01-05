@@ -52,6 +52,8 @@ public:
     STRING,
     IDENT,
     END,
+    //lab2 tokens.
+    
   };
 
 public:
@@ -115,6 +117,10 @@ public:
   static Token String(const Location &l, const std::string &str);
   //lab1
   static Token Int(const Location &l, const std::uint64_t &integer);
+  
+  //lab2
+  static Token If(const Location &l) { return Token(l, Kind::IF); }
+  static Token Modulo(const Location &l) { return Token(l, Kind::MODULO); }
 
   /// Print the token to a stream.
   void Print(std::ostream &os) const;

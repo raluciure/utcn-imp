@@ -28,7 +28,10 @@ enum class Opcode : uint8_t {
   STOP,
   
   //lab1
-  PUSH_INT
+  PUSH_INT,
+  
+  //lab2
+  MODULO,
 };
 
 

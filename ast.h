@@ -22,7 +22,9 @@ public:
     BLOCK,
     WHILE,
     EXPR,
-    RETURN
+    RETURN,
+    //lab2
+    IF
   };
 
 public:
@@ -45,7 +47,10 @@ public:
     REF,
     BINARY,
     CALL,
-    INT
+    INT,
+    //lab2
+    ADD,
+    MODULO,
   };
 
 public:
@@ -172,6 +177,34 @@ public:
 private:
   /// Statements in the body of the block.
   BlockList body_;
+};
+
+//lab2 If statement
+/**
+ * if condition then statement else eStatement
+ */
+ 
+class IfStmt final : public Stmt {
+public:
+  IfStmt(std::shared_ptr<Expr> cond, std::shared_ptr<Stmt> stmt, std::shared_ptr<Stmt> elseStmt)
+    : Stmt(Kind::IF)
+    , cond_(cond)
+    , stmt_(stmt)
+    , elseStmt_(elseStmt)
+  {
+  }
+
+  const Expr &GetCond() const { return *cond_; }
+  const Stmt &GetStmt() const { return *stmt_; }
+  const Stmt &GetElseStmt() const { return *elseStmt_; }
+
+private:
+  /// if condition
+  std::shared_ptr<Expr> cond_;
+  /// statement
+  std::shared_ptr<Stmt> stmt_;
+  /// else statement
+  std::shared_ptr<Stmt> elseStmt_;
 };
 
 /**
